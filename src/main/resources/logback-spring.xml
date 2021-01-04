@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOGS" value="./logs" />
+
+    <appender name="File"
+        class="ch.qos.logback.core.FileAppender">
+        <file>${LOGS}/data-import-spring-boot-logger.log</file>
+        <encoder
+            class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d %p %C{1.} [%t] %m%n</Pattern>
+        </encoder>
+    </appender>
+    
+    <!-- LOG everything at INFO level -->
+    <root level="info">
+        <appender-ref ref="File" />
+    </root>
+
+    <!-- LOG "com.baeldung*" at TRACE level -->
+    <logger name="netnation" level="trace" additivity="false">
+        <appender-ref ref="File" />
+    </logger>
+
+</configuration>
